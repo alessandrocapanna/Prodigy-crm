@@ -1,0 +1,9 @@
+.my_pictures{
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+}
+.my_document{
+    width: 400px;
+    height: 200px;
+}
