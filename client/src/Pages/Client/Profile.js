@@ -8,7 +8,7 @@ export const Profile = () =>{
     const [name, setName] = useState('');
     const [lastname, setLastname] = useState('');
     const [img, setImg] = useState('');
-    const [document, setDocument] = useState('');
+    const [document, setDocument] = useState(''); 
 
     const id = localStorage.getItem("userId")
     const callUserInfo = async ()=>{

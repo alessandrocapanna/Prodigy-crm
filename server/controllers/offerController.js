@@ -1,5 +1,4 @@
-
-const Offers =require("../models").Offers;
+const  Offers =require("../models").Offers;
 const  UserOffer =require("../models").User_Offer;
 const  Users =require("../models").Users;
 //getall
@@ -34,11 +33,22 @@ async function getOfferById(id){
 
     return offerData;
 };
+async function getOfferByUserId(userId){
+    const offerData =  UserOffer.findAll({
+        where:{ UserId: userId },
+        include:[
+            {model: Offers} //load offers
+        ]
+    });
+
+    return offerData;
+};
 
 
 module.exports={
     getOffers,
     createOffer,
     createUsersOffers,
-    getOfferById
+    getOfferById,
+    getOfferByUserId
 };

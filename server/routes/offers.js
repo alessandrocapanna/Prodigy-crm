@@ -1,5 +1,5 @@
 const express = require("express");
-const { getOffers,createOffer,createUsersOffers,getOfferById} = require("../controllers/offerController");
+const { getOffers,createOffer,createUsersOffers,getOfferById,getOfferByUserId} = require("../controllers/offerController");
 const router = express.Router();
 // getall route
 router.get('/', async (req, resp)=>{
@@ -12,6 +12,7 @@ router.get('/', async (req, resp)=>{
     }
 
 });
+
 router.post('/create', async (req, resp)=>{
     try{
         const result = await createOffer(req.body);
@@ -25,6 +26,16 @@ router.post('/create', async (req, resp)=>{
 router.post('/getbyid', async (req, resp)=>{
     try{
         const result = await getOfferById(req.body.id);
+      
+        resp.json(result);
+    } catch (e) {
+        resp.status(500).send(e.toString());
+    }
+
+});
+router.post('/getbyuserid', async (req, resp)=>{
+    try{
+        const result = await getOfferByUserId(req.body.userId);
       
         resp.json(result);
     } catch (e) {
